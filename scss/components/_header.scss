@@ -1,0 +1,104 @@
+// ------ header-----
+
+header {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    h1 {
+        font-size: 3em; 
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+        padding: 10px;
+        border: 2px solid var(--color-highlight); 
+        border-radius: 10px; /* Bordes redondeados */
+        transition: transform 0.3s, background-color 0.3s; 
+
+        a {
+            color: var(--color-text-light); 
+            text-decoration: none; 
+            transition: color 0.3s; 
+
+            &:hover {
+                color: var(--color-text-dark); 
+            }
+        }
+
+        &:hover {
+            background-color: var(--color-secondary); 
+            transform: scale(1.05); 
+        }
+    }
+}
+
+/* Barra de navegación */
+
+.barra {
+    background-color: var(--color-primary);
+    padding: 10px;
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin: 0 15px;
+            position: relative;
+
+            &:not(:last-child)::after {
+                content: "";
+                position: absolute;
+                right: -15px;
+                top: 0;
+                height: 100%;
+                width: 1px;
+                background-color: #ccc;
+            }
+
+            a {
+                display: inline-block;
+                padding: 10px 15px;
+                text-decoration: none;
+                color: var(--color-text-light);
+                font-weight: bold;
+                transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Transición suave para el fondo, color y escalado */
+
+                &:hover {
+                    background-color: var(--color-secondary); /* Cambiar fondo al pasar el mouse */
+                    color: var(--color-text-dark); /* Cambiar color del texto al pasar el mouse */
+                    transform: scale(1.05); /* Aumentar ligeramente el tamaño del enlace */
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+    }
+
+    .barra nav ul {
+        flex-direction: column;
+        align-items: center;
+
+        li {
+            margin: 10px 0;
+
+            &:not(:last-child) {
+                border-bottom: 1px solid #ccc;
+            }
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+}
