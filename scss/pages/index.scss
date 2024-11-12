@@ -39,31 +39,81 @@
     }
 }
 
-.grid-container {
-    display: grid;
-    gap: 20px;
-    padding: 20px;
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: #f0ece2;
+// styles/_grid.scss
+
+.background-image {
+    position: relative;
+    text-align: center; 
+    margin-bottom: 20px; 
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('../../img/3d_printer.jpg'); 
+        background-size: cover;
+        background-position: center;
+        opacity: 0.3; 
+        z-index: 1; 
+    }
+
+    .title_h2 {
+        position: relative; 
+        z-index: 2; 
+        margin-bottom: 20px; 
+        color: var(--color-text-dark); 
+        font-size: 2rem; 
+        font-weight: bold; 
+        line-height: 1.2; 
+    }
+
+    .grid-container {
+        position: relative; 
+        z-index: 2; 
+        display: grid;
+        gap: 20px;
+        padding: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: rgba(240, 236, 226, 0.8); 
+    }
+
+    .grid-item {
+        background-color: #ffffff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: slideIn 0.5s ease forwards; 
+
+        section {
+            margin-bottom: 15px; 
+        }
+
+        .section-title,
+        .article-title {
+            color: var(--color-text-dark);
+            margin-bottom: 10px;
+        }
+    }
 }
 
-.grid-item {
-    background-color: #ffffff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.section-title,
-.article-title {
-    color: var(--color-text-dark);
-    margin-bottom: 10px;
+@keyframes slideIn {
+    0% {
+        transform: translateY(20px); 
+        opacity: 0; 
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1; 
+    }
 }
 
 @media (max-width: 768px) {
     .grid-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; 
     }
 }

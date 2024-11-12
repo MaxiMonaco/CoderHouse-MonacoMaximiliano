@@ -119,11 +119,9 @@ header h1:hover {
     display: none;
   }
 }
-.submit-button {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  font-size: 18px;
+.button-base, .add-to-cart, .buy-button, .submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
   background-color: var(--color-highlight);
   color: var(--color-text-light);
   border: none;
@@ -131,37 +129,21 @@ header h1:hover {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-.submit-button:hover {
+.button-base:hover, .add-to-cart:hover, .buy-button:hover, .submit-button:hover {
   background-color: #d4852a;
+}
+.button-base:active, .add-to-cart:active, .buy-button:active, .submit-button:active {
+  transform: scale(0.95);
+}
+
+.submit-button {
+  display: block;
+  width: 100%;
+  font-size: 18px;
 }
 
 .buy-button {
   display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: var(--color-highlight);
-  color: var(--color-text-light);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-.buy-button:hover {
-  background-color: #d4852a;
-}
-
-.add-to-cart {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: var(--color-highlight);
-  color: var(--color-text-light);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-.add-to-cart:hover {
-  background-color: #d4852a;
 }
 
 footer {
@@ -212,6 +194,20 @@ footer div:last-child {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.title_h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--color-text-dark);
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .title_h2 {
+    font-size: 1.5rem;
+  }
+}
 .container {
   margin: 0;
   width: 100%;
@@ -248,29 +244,70 @@ footer div:last-child {
     width: 80%;
   }
 }
-.grid-container {
+.background-image {
+  position: relative;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.background-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("../../img/3d_printer.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: 1;
+}
+.background-image .title_h2 {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 20px;
+  color: var(--color-text-dark);
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+.background-image .grid-container {
+  position: relative;
+  z-index: 2;
   display: grid;
   gap: 20px;
   padding: 20px;
   grid-template-columns: repeat(2, 1fr);
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #f0ece2;
+  background-color: rgba(240, 236, 226, 0.8);
 }
-
-.grid-item {
+.background-image .grid-item {
   background-color: #ffffff;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.5s ease forwards;
 }
-
-.section-title,
-.article-title {
+.background-image .grid-item section {
+  margin-bottom: 15px;
+}
+.background-image .grid-item .section-title,
+.background-image .grid-item .article-title {
   color: var(--color-text-dark);
   margin-bottom: 10px;
 }
 
+@keyframes slideIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 @media (max-width: 768px) {
   .grid-container {
     grid-template-columns: 1fr;
@@ -323,6 +360,16 @@ footer div:last-child {
   border-color: var(--color-secondary);
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .impression-grid {
   display: grid;
   gap: 20px;
@@ -337,6 +384,12 @@ footer div:last-child {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: transform 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+.impression-item:hover {
+  transform: scale(1.05);
 }
 .impression-item img {
   max-width: 100%;
@@ -354,9 +407,46 @@ footer div:last-child {
   margin-bottom: 10px;
 }
 
+.impression-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.impression-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.impression-item:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.impression-item:nth-child(4) {
+  animation-delay: 0.1s;
+}
+
+.impression-item:nth-child(5) {
+  animation-delay: 0.2s;
+}
+
+.impression-item:nth-child(6) {
+  animation-delay: 0.2s;
+}
+
+.impression-item:nth-child(7) {
+  animation-delay: 0.2s;
+}
+
+.impression-item:nth-child(8) {
+  animation-delay: 0.2s;
+}
+
 @media (max-width: 768px) {
   .impression-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .impression-grid {
+    grid-template-columns: 1fr;
   }
 }
 .impresoras-stock {
@@ -371,30 +461,62 @@ footer div:last-child {
   max-width: 1200px;
   margin: 0 auto;
 }
-
-.impresora-item {
+.impresoras-grid .impresora-item {
   background-color: #ffffff;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards;
 }
-.impresora-item img {
+.impresoras-grid .impresora-item img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
   margin-bottom: 10px;
 }
-.impresora-item h3 {
+.impresoras-grid .impresora-item h3 {
   color: var(--color-text-dark);
   margin-bottom: 10px;
 }
-.impresora-item p {
+.impresoras-grid .impresora-item p {
   color: #666;
   font-size: 14px;
   margin-bottom: 10px;
 }
+.impresoras-grid .impresora-item:nth-child(1) {
+  animation-delay: 0s;
+}
+.impresoras-grid .impresora-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.impresoras-grid .impresora-item:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.impresoras-grid .impresora-item:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.impresoras-grid .impresora-item:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.impresoras-grid .impresora-item:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.impresoras-grid .impresora-item:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.impresoras-grid .impresora-item:nth-child(8) {
+  animation-delay: 0.7s;
+}
 
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @media (max-width: 768px) {
   .impresoras-grid {
     grid-template-columns: 1fr;
