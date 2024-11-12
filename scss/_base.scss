@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #596e79;
+    --color-secondary: #f0a500;
+    --color-background: #f3f3f3;
+    --color-text-light: #ffffff;
+    --color-text-dark: #333;
+    --color-highlight: #f29d35;
+}
+
+section p {
+    font-size: 16px;
+    background-color: #dfd3c3;
+}
+
+article p {
+    font-size: 16px;
+    background-color: #f0ece2;
+}
+
+ol {
+    background-color: #f0ece2;
+
+    li a {
+        font-size: 16px;
+    }
+}

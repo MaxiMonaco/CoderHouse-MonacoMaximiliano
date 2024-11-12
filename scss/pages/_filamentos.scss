@@ -1,0 +1,48 @@
+.filament-display {
+    text-align: center;
+    margin: 20px auto;
+    max-width: 500px;
+}
+
+.featured-image {
+    position: relative;
+}
+
+.image-display label {
+    display: none;
+}
+
+#img1:checked~.image-display label[for="img1"],
+#img2:checked~.image-display label[for="img2"],
+#img3:checked~.image-display label[for="img3"],
+#img4:checked~.image-display label[for="img4"] {
+    display: inline-block;
+}
+
+.image-display img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    label img {
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        transition: transform 0.3s;
+        border: 2px solid transparent;
+        border-radius: 8px;
+
+        &:hover {
+            transform: scale(1.1);
+            border-color: var(--color-secondary);
+        }
+    }
+}
