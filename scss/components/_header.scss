@@ -80,7 +80,9 @@ header {
     }
 }
 
-@media (max-width: 768px) {
+
+
+@include movil(){
     header {
         flex-direction: column;
     }
