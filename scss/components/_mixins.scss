@@ -1,0 +1,13 @@
+//Sumar los mixin necesarios buscar dentro de los codigos de sass partes que se repitan segun el comportamiento de la pagina.
+
+@mixin movil(){
+    @media screen and (max-width: 768px){
+        @content;
+    }
+}
+
+@mixin small(){
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}

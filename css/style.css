@@ -101,7 +101,7 @@ header h1:hover {
   transform: scale(1.05); /* Aumentar ligeramente el tamaño del enlace */
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
   header {
     flex-direction: column;
   }
@@ -256,7 +256,7 @@ footer div:last-child {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url("../../img/3d_printer.jpg");
+  background-image: url("../../img/printers/3d_printer.jpg");
   background-size: cover;
   background-position: center;
   opacity: 0.3;
@@ -313,53 +313,47 @@ footer div:last-child {
     grid-template-columns: 1fr;
   }
 }
-.filament-display {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 500px;
-}
-
-.featured-image {
-  position: relative;
-}
-
-.image-display label {
-  display: none;
-}
-
-#img1:checked ~ .image-display label[for=img1],
-#img2:checked ~ .image-display label[for=img2],
-#img3:checked ~ .image-display label[for=img3],
-#img4:checked ~ .image-display label[for=img4] {
-  display: inline-block;
-}
-
-.image-display img {
+body {
   width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
-.carousel {
+.gallery {
+  width: 100%;
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-}
-.carousel label img {
-  width: 80px;
-  height: 80px;
-  cursor: pointer;
-  transition: transform 0.3s;
-  border: 2px solid transparent;
-  border-radius: 8px;
-}
-.carousel label img:hover {
-  transform: scale(1.1);
-  border-color: var(--color-secondary);
 }
 
+.lamp {
+  height: 400px;
+  width: 600px;
+  margin: 50px;
+  border: 0.5mm solid black;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+.lamp img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    clip-path: inset(100% 100% 0 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+  }
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -376,6 +370,16 @@ footer div:last-child {
   padding: 20px;
   grid-template-columns: repeat(4, 1fr);
   background-color: var(--color-background);
+}
+@media screen and (max-width: 768px) {
+  .impression-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 480px) {
+  .impression-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .impression-item {
@@ -439,16 +443,6 @@ footer div:last-child {
   animation-delay: 0.2s;
 }
 
-@media (max-width: 768px) {
-  .impression-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 480px) {
-  .impression-grid {
-    grid-template-columns: 1fr;
-  }
-}
 .impresoras-stock {
   padding: 20px;
   background-color: #f0ece2;
@@ -510,16 +504,16 @@ footer div:last-child {
 .impresoras-grid .impresora-item:nth-child(8) {
   animation-delay: 0.7s;
 }
+@media screen and (max-width: 768px) {
+  .impresoras-grid .impresora-item {
+    grid-template-columns: 1fr;
+  }
+}
 
 @keyframes fadeInUp {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-@media (max-width: 768px) {
-  .impresoras-grid {
-    grid-template-columns: 1fr;
   }
 }
 .form-section {
